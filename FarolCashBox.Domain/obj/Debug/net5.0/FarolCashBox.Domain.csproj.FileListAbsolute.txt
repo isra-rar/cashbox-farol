@@ -1,0 +1,15 @@
+C:\Learning\cashbox-farol\FarolCashBox.Domain\bin\Debug\net5.0\FarolCashBox.Domain.deps.json
+C:\Learning\cashbox-farol\FarolCashBox.Domain\bin\Debug\net5.0\FarolCashBox.Domain.dll
+C:\Learning\cashbox-farol\FarolCashBox.Domain\bin\Debug\net5.0\ref\FarolCashBox.Domain.dll
+C:\Learning\cashbox-farol\FarolCashBox.Domain\bin\Debug\net5.0\FarolCashBox.Domain.pdb
+C:\Learning\cashbox-farol\FarolCashBox.Domain\obj\Debug\net5.0\FarolCashBox.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Learning\cashbox-farol\FarolCashBox.Domain\obj\Debug\net5.0\FarolCashBox.Domain.AssemblyInfoInputs.cache
+C:\Learning\cashbox-farol\FarolCashBox.Domain\obj\Debug\net5.0\FarolCashBox.Domain.AssemblyInfo.cs
+C:\Learning\cashbox-farol\FarolCashBox.Domain\obj\Debug\net5.0\FarolCashBox.Domain.csproj.CoreCompileInputs.cache
+C:\Learning\cashbox-farol\FarolCashBox.Domain\obj\Debug\net5.0\FarolCashBox.Domain.dll
+C:\Learning\cashbox-farol\FarolCashBox.Domain\obj\Debug\net5.0\ref\FarolCashBox.Domain.dll
+C:\Learning\cashbox-farol\FarolCashBox.Domain\obj\Debug\net5.0\FarolCashBox.Domain.pdb
+C:\Learning\cashbox-farol\FarolCashBox.Domain\obj\Debug\net5.0\FarolCashBox.Domain.csproj.AssemblyReference.cache
+C:\Learning\cashbox-farol\FarolCashBox.Domain\bin\Debug\net5.0\FarolCashBox.Domain.runtimeconfig.json
+C:\Learning\cashbox-farol\FarolCashBox.Domain\bin\Debug\net5.0\FarolCashBox.Domain.runtimeconfig.dev.json
+C:\Learning\cashbox-farol\FarolCashBox.Domain\obj\Debug\net5.0\FarolCashBox.Domain.genruntimeconfig.cache
