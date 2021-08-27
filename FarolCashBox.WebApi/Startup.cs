@@ -43,6 +43,7 @@ namespace FarolCashBox.WebApi
             services.AddDbContext<DataContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("connectionString")));
 
             services.AddScoped<IRepository<Product>, ProductRepository>();
+            services.AddScoped<IRepository<CashBox>, CashBoxRepository>();
             services.AddMediatR(AppDomain.CurrentDomain.GetAssemblies());
         }
 

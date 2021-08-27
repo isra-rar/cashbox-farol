@@ -13,12 +13,12 @@ using Xunit;
 
 namespace FarolCashBox.Tests.EntityTests
 {
-    public class ProductTests
+    public class CreateProductRequestHandlerTests
     {
         private readonly CreateProductRequestHandler _sut;
         private readonly IRepository<Product> _productReposity;
 
-        public ProductTests()
+        public CreateProductRequestHandlerTests()
         {
             _productReposity = Substitute.For<IRepository<Product>>();
             _sut = new CreateProductRequestHandler(_productReposity);

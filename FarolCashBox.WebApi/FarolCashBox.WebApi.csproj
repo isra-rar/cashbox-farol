@@ -15,10 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\FarolCashBox.Domain\FarolCashBox.Domain.csproj" />
     <ProjectReference Include="..\FarolCashBox.Infra\FarolCashBox.Infra.csproj" />
   </ItemGroup>
