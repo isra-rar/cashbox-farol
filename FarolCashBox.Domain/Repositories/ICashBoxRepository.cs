@@ -1,14 +1,13 @@
 ﻿using FarolCashBox.Domain.Entities;
-using FarolCashBox.Domain.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FarolCashBox.Infra.Repositories.Interfaces
+namespace FarolCashBox.Domain.Repositories
 {
-    public interface IProductRepository : IRepository<Product>
+    public interface ICashBoxRepository : IRepository<CashBox>
     {
     }
 }

@@ -12,9 +12,9 @@ namespace FarolCashBox.Domain.Handlers
 {
     public class CreateProductRequestHandler : Notifiable<Notification>, IRequestHandler<CreateProductRequest, GenericCommandResult<CreateProductResponse>>
     {
-        private readonly IRepository<Product> _productReposity;
+        private readonly IProductRepository _productReposity;
 
-        public CreateProductRequestHandler(IRepository<Product> productReposity)
+        public CreateProductRequestHandler(IProductRepository productReposity)
         {
             _productReposity = productReposity;
         }

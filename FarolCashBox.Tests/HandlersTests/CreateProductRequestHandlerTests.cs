@@ -16,11 +16,11 @@ namespace FarolCashBox.Tests.EntityTests
     public class CreateProductRequestHandlerTests
     {
         private readonly CreateProductRequestHandler _sut;
-        private readonly IRepository<Product> _productReposity;
+        private readonly IProductRepository _productReposity;
 
         public CreateProductRequestHandlerTests()
         {
-            _productReposity = Substitute.For<IRepository<Product>>();
+            _productReposity = Substitute.For<IProductRepository>();
             _sut = new CreateProductRequestHandler(_productReposity);
         }
 

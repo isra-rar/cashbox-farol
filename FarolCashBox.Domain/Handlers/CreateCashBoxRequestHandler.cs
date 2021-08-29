@@ -12,9 +12,9 @@ namespace FarolCashBox.Domain.Handlers
 {
     public class CreateCashBoxRequestHandler : Notifiable<Notification>, IRequestHandler<CreateCashBoxRequest, GenericCommandResult<CreateCashBoxResponse>>
     {
-        private readonly IRepository<CashBox> _cashBoxReposity;
+        private readonly ICashBoxRepository _cashBoxReposity;
 
-        public CreateCashBoxRequestHandler(IRepository<CashBox> cashBoxReposity)
+        public CreateCashBoxRequestHandler(ICashBoxRepository cashBoxReposity)
         {
             _cashBoxReposity = cashBoxReposity;
         }
@@ -32,7 +32,7 @@ namespace FarolCashBox.Domain.Handlers
 
             _cashBoxReposity.Create(cashBox);
 
-            var result = new GenericCommandResult<CreateCashBoxResponse>(true, "Produto criado com sucesso",
+            var result = new GenericCommandResult<CreateCashBoxResponse>(true, "Caixa criado com sucesso",
             new CreateCashBoxResponse
             {
                 Id = cashBox.Id,

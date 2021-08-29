@@ -42,8 +42,8 @@ namespace FarolCashBox.WebApi
             //services.AddDbContext<DataContext>(opt => opt.UseInMemoryDatabase("Database"));
             services.AddDbContext<DataContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("connectionString")));
 
-            services.AddScoped<IRepository<Product>, ProductRepository>();
-            services.AddScoped<IRepository<CashBox>, CashBoxRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<ICashBoxRepository, CashBoxRepository>();
             services.AddMediatR(AppDomain.CurrentDomain.GetAssemblies());
         }
 

@@ -16,11 +16,11 @@ namespace FarolCashBox.Tests.EntityTests
     public class CreateCashBoxRequestHandlerTests
     {
         private readonly CreateCashBoxRequestHandler _sut;
-        private readonly IRepository<CashBox> _cashBoxReposity;
+        private readonly ICashBoxRepository _cashBoxReposity;
 
         public CreateCashBoxRequestHandlerTests()
         {
-            _cashBoxReposity = Substitute.For<IRepository<CashBox>>();
+            _cashBoxReposity = Substitute.For<ICashBoxRepository>();
             _sut = new CreateCashBoxRequestHandler(_cashBoxReposity);
         }
 

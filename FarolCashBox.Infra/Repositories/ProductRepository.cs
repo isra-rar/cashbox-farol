@@ -1,6 +1,6 @@
 ﻿using FarolCashBox.Domain.Entities;
+using FarolCashBox.Domain.Repositories;
 using FarolCashBox.Infra.Context;
-using FarolCashBox.Infra.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 
