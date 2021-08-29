@@ -7,7 +7,7 @@ namespace FarolCashBox.Domain.Entities
 {
     public class Order : EntityBase
     {
-        private IList<Product> _products;
+        private List<Product> _products;
         public Order(Guid cashBoxId)
         {
             CashBoxId = cashBoxId;
@@ -20,9 +20,10 @@ namespace FarolCashBox.Domain.Entities
         public Guid CashBoxId { get; private set; }
         public CashBox CashBox { get; private set; }
 
-        public void AddProduct(List<Product> products)
+        public void AddProducts(List<Product> products)
         {
-            products.AddRange(products);
+            foreach (var product in products)
+                _products.Add(product);
         }
 
         public decimal GenerateTotalOrder()

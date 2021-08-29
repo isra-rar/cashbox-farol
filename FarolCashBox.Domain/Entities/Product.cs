@@ -1,6 +1,7 @@
 using FarolCashBox.Domain.Enums;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 
 namespace FarolCashBox.Domain.Entities
 {
@@ -20,6 +21,7 @@ namespace FarolCashBox.Domain.Entities
         public decimal Value { get; private set; }
         public int Quantity { get; private set; }
         public EProductType ProductType { get; private set; }
+        [JsonIgnore]
         public IEnumerable<Order> Orders { get { return _orders.ToArray(); } }
     }
 }

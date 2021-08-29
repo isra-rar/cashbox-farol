@@ -5,37 +5,34 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace FarolCashBox.Infra.Repositories
 {
-    public class ProductRepository : IProductRepository
+    public class OrderRepository : IOrderRepository
     {
         private readonly DataContext _context;
 
-        public ProductRepository(DataContext context) => _context = context;
+        public OrderRepository(DataContext context) => _context = context;
 
-        public void Create(Product entity)
+        public void Create(Order entity)
         {
-            _context.Products.Add(entity);
+            _context.Orders.Add(entity);
             _context.SaveChanges();
         }
 
         public void Delete(Guid id)
         {
-            var product = _context.Products.Find(id);
-            _context.Remove(product);
+            var order = _context.Orders.Find(id);
+            _context.Remove(order);
             _context.SaveChanges();
         }
 
-        public void Update(Product entity)
+        public void Update(Order entity)
         {
             _context.Entry(entity).State = EntityState.Modified;
             _context.SaveChanges();
-        }
-
-        public List<Product> GetProductsByIds(List<Guid> ids)
-        {
-            return _context.Products.Where(x => ids.Contains(x.Id)).ToList();
         }
     }
 }

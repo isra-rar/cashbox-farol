@@ -1,12 +1,13 @@
 ﻿using FarolCashBox.Domain.Entities;
 using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace FarolCashBox.Domain.Repositories
 {
-    public interface IProductRepository : IRepository<Product>
+    public interface IOrderRepository : IRepository<Order>
     {
-        List<Product> GetProductsByIds(List<Guid> ids);
     }
 }

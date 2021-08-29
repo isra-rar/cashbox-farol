@@ -44,6 +44,7 @@ namespace FarolCashBox.WebApi
 
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ICashBoxRepository, CashBoxRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddMediatR(AppDomain.CurrentDomain.GetAssemblies());
         }
 
