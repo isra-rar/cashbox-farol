@@ -1,6 +1,7 @@
 ﻿using FarolCashBox.Domain.Commands;
 using FarolCashBox.Domain.Commands.Requests;
 using FarolCashBox.Domain.Commands.Response;
+using FarolCashBox.Domain.Commands.Response.ViewModels;
 using FarolCashBox.Domain.Entities;
 using FarolCashBox.Domain.Repositories;
 using Flunt.Notifications;
@@ -48,7 +49,12 @@ namespace FarolCashBox.Domain.Handlers
                 TotalOrder = order.TotalOrder,
                 PaymentType = order.PaymentType.ToString(),
                 CashBoxId = order.CashBoxId,
-                Products = order.Products
+                Products = order.Products.Select(x => new ProductViewModel
+                {
+                    Name = x.Name,
+                    Value = x.Value,
+                    ProductType = x.ProductType.ToString()
+                })
             });
 
             return await Task.FromResult(result);
