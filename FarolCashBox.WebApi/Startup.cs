@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using FarolCashBox.Domain.Entities;
+using FarolCashBox.Domain.Mapper;
 using FarolCashBox.Domain.Repositories;
 using FarolCashBox.Infra.Context;
 using FarolCashBox.Infra.Repositories;
@@ -45,6 +47,7 @@ namespace FarolCashBox.WebApi
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ICashBoxRepository, CashBoxRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddAutoMapper(typeof(ProductProfile));
             services.AddMediatR(AppDomain.CurrentDomain.GetAssemblies());
         }
 

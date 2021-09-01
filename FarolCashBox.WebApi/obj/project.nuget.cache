@@ -1,9 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "62zoHJ9T3/No4484zUs9zhpZuTvAh3FJANzViJ4hO2+EknE3kd11R4DHeO46gWYKK4t8ed21yrOTLjJJ3P5H5Q==",
+  "dgSpecHash": "pCZmfTD6CglmkAr0KXJdhneskmC0myx+GpZM1cgcuihbSCvdv/v77UOqDieV4SH7FGFctOdtvslPbo3jGnJ7tw==",
   "success": true,
   "projectFilePath": "C:\\Learning\\cashbox-farol\\FarolCashBox.WebApi\\FarolCashBox.WebApi.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\israe\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
+    "C:\\Users\\israe\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
+    "C:\\Users\\israe\\.nuget\\packages\\divino.operationresult\\2.0.2\\divino.operationresult.2.0.2.nupkg.sha512",
     "C:\\Users\\israe\\.nuget\\packages\\flunt\\2.0.5\\flunt.2.0.5.nupkg.sha512",
     "C:\\Users\\israe\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\israe\\.nuget\\packages\\mediatr\\9.0.0\\mediatr.9.0.0.nupkg.sha512",
@@ -75,7 +78,7 @@
     "C:\\Users\\israe\\.nuget\\packages\\system.private.datacontractserialization\\4.3.0\\system.private.datacontractserialization.4.3.0.nupkg.sha512",
     "C:\\Users\\israe\\.nuget\\packages\\system.private.uri\\4.3.2\\system.private.uri.4.3.2.nupkg.sha512",
     "C:\\Users\\israe\\.nuget\\packages\\system.reflection\\4.3.0\\system.reflection.4.3.0.nupkg.sha512",
-    "C:\\Users\\israe\\.nuget\\packages\\system.reflection.emit\\4.3.0\\system.reflection.emit.4.3.0.nupkg.sha512",
+    "C:\\Users\\israe\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512",
     "C:\\Users\\israe\\.nuget\\packages\\system.reflection.emit.ilgeneration\\4.3.0\\system.reflection.emit.ilgeneration.4.3.0.nupkg.sha512",
     "C:\\Users\\israe\\.nuget\\packages\\system.reflection.emit.lightweight\\4.3.0\\system.reflection.emit.lightweight.4.3.0.nupkg.sha512",
     "C:\\Users\\israe\\.nuget\\packages\\system.reflection.extensions\\4.3.0\\system.reflection.extensions.4.3.0.nupkg.sha512",

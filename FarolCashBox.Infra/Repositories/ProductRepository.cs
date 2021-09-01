@@ -1,10 +1,12 @@
 ﻿using FarolCashBox.Domain.Entities;
+using FarolCashBox.Domain.Enums;
 using FarolCashBox.Domain.Repositories;
 using FarolCashBox.Infra.Context;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace FarolCashBox.Infra.Repositories
 {
@@ -14,9 +16,9 @@ namespace FarolCashBox.Infra.Repositories
 
         public ProductRepository(DataContext context) => _context = context;
 
-        public void Create(Product entity)
+        public async void Create(Product entity)
         {
-            _context.Products.Add(entity);
+            await _context.Products.AddAsync(entity);
             _context.SaveChanges();
         }
 
@@ -35,7 +37,12 @@ namespace FarolCashBox.Infra.Repositories
 
         public List<Product> GetProductsByIds(List<Guid> ids)
         {
-            return _context.Products.Where(x => ids.Contains(x.Id)).ToList();
+            return _context.Products.AsNoTracking().Where(x => ids.Contains(x.Id)).ToList();
+        }
+
+        public IEnumerable<Product> GetAllProductsByType(EProductType productType)
+        {
+            return _context.Products.AsNoTracking().Where(x => x.ProductType == productType);
         }
     }
 }

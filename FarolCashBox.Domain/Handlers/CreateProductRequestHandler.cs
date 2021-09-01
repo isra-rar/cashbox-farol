@@ -1,49 +1,45 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using AutoMapper;
 using FarolCashBox.Domain.Commands;
 using FarolCashBox.Domain.Commands.Requests;
 using FarolCashBox.Domain.Commands.Response;
 using FarolCashBox.Domain.Entities;
+using FarolCashBox.Domain.Expections;
 using FarolCashBox.Domain.Repositories;
 using Flunt.Notifications;
 using MediatR;
+using OperationResult;
 
 namespace FarolCashBox.Domain.Handlers
 {
-    public class CreateProductRequestHandler : Notifiable<Notification>, IRequestHandler<CreateProductRequest, GenericCommandResult<CreateProductResponse>>
+    public class CreateProductRequestHandler : Notifiable<Notification>, IRequestHandler<CreateProductRequest, Result<CreateProductResponse>>
     {
         private readonly IProductRepository _productReposity;
+        private readonly IMapper _mapper;
 
-        public CreateProductRequestHandler(IProductRepository productReposity)
+        public CreateProductRequestHandler(IProductRepository productReposity, IMapper mapper)
         {
             _productReposity = productReposity;
+            _mapper = mapper;
         }
 
-        public async Task<GenericCommandResult<CreateProductResponse>> Handle(CreateProductRequest request, CancellationToken cancellationToken)
+        public async Task<Result<CreateProductResponse>> Handle(CreateProductRequest request, CancellationToken cancellationToken)
         {
             request.Validate();
             if (!request.IsValid)
             {
-                var failValidation = new GenericCommandResult<CreateProductResponse>(false, "Dados Invalidos", request.Notifications, 400);
-                return await Task.FromResult(failValidation);
+                return new InvalidModelException(request.Notifications.ToList());
             }
 
             var product = new Product(request.Name, request.Value, request.Quantity, request.ProductType);
 
             _productReposity.Create(product);
 
-            var result = new GenericCommandResult<CreateProductResponse>(true, "Produto criado com sucesso",
-            new CreateProductResponse
-            {
-                Id = product.Id,
-                CreationDate = product.CreationDate,
-                Name = product.Name,
-                Value = product.Value,
-                Quantity = product.Quantity,
-                ProductType = product.ProductType.ToString()
-            });
-
-            return await Task.FromResult(result);
+            return _mapper.Map<CreateProductResponse>(product);
         }
     }
 }

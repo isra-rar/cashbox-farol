@@ -5,10 +5,11 @@ using FarolCashBox.Domain.Enums;
 using Flunt.Notifications;
 using Flunt.Validations;
 using MediatR;
+using OperationResult;
 
 namespace FarolCashBox.Domain.Commands.Requests
 {
-    public class CreateProductRequest : Notifiable<Notification>, IRequest<GenericCommandResult<CreateProductResponse>>, ICommand
+    public class CreateProductRequest : Notifiable<Notification>, IRequest<Result<CreateProductResponse>>, ICommand
     {
         public CreateProductRequest(string name, decimal value, int quantity, EProductType productType)
         {

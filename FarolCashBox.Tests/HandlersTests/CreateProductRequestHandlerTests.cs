@@ -1,7 +1,9 @@
-﻿using FarolCashBox.Domain.Commands.Requests;
+﻿using AutoMapper;
+using FarolCashBox.Domain.Commands.Requests;
 using FarolCashBox.Domain.Commands.Response;
 using FarolCashBox.Domain.Entities;
 using FarolCashBox.Domain.Enums;
+using FarolCashBox.Domain.Expections;
 using FarolCashBox.Domain.Handlers;
 using FarolCashBox.Domain.Repositories;
 using FluentAssertions;
@@ -17,11 +19,13 @@ namespace FarolCashBox.Tests.EntityTests
     {
         private readonly CreateProductRequestHandler _sut;
         private readonly IProductRepository _productReposity;
+        private readonly IMapper _mapper;
 
         public CreateProductRequestHandlerTests()
         {
             _productReposity = Substitute.For<IProductRepository>();
-            _sut = new CreateProductRequestHandler(_productReposity);
+            _mapper = Substitute.For<IMapper>();
+            _sut = new CreateProductRequestHandler(_productReposity, _mapper);
         }
 
         [Fact]
@@ -34,9 +38,8 @@ namespace FarolCashBox.Tests.EntityTests
             var result = await _sut.Handle(request, default);
 
             // Assert
-            result.Sucess.Should().BeFalse();
-            result.Code.Should().Be(400);
-            result.Data.Should().BeOfType(typeof(List<Notification>));
+            result.IsSuccess.Should().BeFalse();
+            result.Exception.Should().BeOfType(typeof(InvalidModelException));
         }
 
         [Fact]
@@ -49,9 +52,7 @@ namespace FarolCashBox.Tests.EntityTests
             var result = await _sut.Handle(request, default);
 
             // Assert
-            result.Sucess.Should().BeTrue();
-            result.Code.Should().Be(200);
-            result.Data.Should().BeOfType(typeof(CreateProductResponse));
+            result.IsSuccess.Should().BeTrue();
             _productReposity.Received().Create(Arg.Any<Product>());
         }
 

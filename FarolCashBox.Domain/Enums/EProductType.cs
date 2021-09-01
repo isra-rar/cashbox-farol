@@ -4,6 +4,7 @@ namespace FarolCashBox.Domain.Enums
     {
         SAVORY = 0,
         DRINK = 1,
-        CANDY = 2
+        CANDY = 2,
+        GENERAL = 3
     }
 }

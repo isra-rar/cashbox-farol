@@ -40,6 +40,14 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[10.1.1, )"
+            },
+            "Divino.OperationResult": {
+              "target": "Package",
+              "version": "[2.0.2, )"
+            },
             "Flunt": {
               "target": "Package",
               "version": "[2.0.5, )"
@@ -201,6 +209,14 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[8.1.1, )"
+            },
+            "Divino.OperationResult": {
+              "target": "Package",
+              "version": "[2.0.2, )"
+            },
             "MediatR": {
               "target": "Package",
               "version": "[9.0.0, )"
