@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FarolCashBox.Infra.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210827094701_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20210918070208_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

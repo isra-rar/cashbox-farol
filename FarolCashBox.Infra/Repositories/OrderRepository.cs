@@ -1,12 +1,8 @@
-﻿using FarolCashBox.Domain.Entities;
+﻿using System;
+using FarolCashBox.Domain.Entities;
 using FarolCashBox.Domain.Repositories;
 using FarolCashBox.Infra.Context;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FarolCashBox.Infra.Repositories
 {
@@ -18,6 +14,11 @@ namespace FarolCashBox.Infra.Repositories
 
         public void Create(Order entity)
         {
+            foreach (var product in entity.Products)
+            {
+                _context.Products.Attach(product);
+
+            }
             _context.Orders.Add(entity);
             _context.SaveChanges();
         }

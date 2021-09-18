@@ -1,28 +1,20 @@
-﻿using FarolCashBox.Domain.Commands;
-using FarolCashBox.Domain.Commands.Requests;
-using FarolCashBox.Domain.Commands.Response;
+﻿using FarolCashBox.Domain.Commands.Requests;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace FarolCashBox.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class OrderController : ControllerBase
+    public class OrderController : BaseController
     {
-        private readonly IMediator _mediator;
-
-        public OrderController(IMediator mediator)
-            => _mediator = mediator;
+        public OrderController(IMediator mediator) 
+            : base(mediator) { }
 
         [HttpPost]
-        public Task<GenericCommandResult<CreateOrderResponse>> CreateOrder(
+        public async Task<IActionResult> CreateOrder(
             [FromBody] CreateOrderRequest request)
-            => _mediator.Send(request);
+            => await SendRequest(request);
     }
 }

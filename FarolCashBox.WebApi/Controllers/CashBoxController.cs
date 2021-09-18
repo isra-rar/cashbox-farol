@@ -1,6 +1,4 @@
-﻿using FarolCashBox.Domain.Commands;
-using FarolCashBox.Domain.Commands.Requests;
-using FarolCashBox.Domain.Commands.Response;
+﻿using FarolCashBox.Domain.Commands.Requests;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -9,16 +7,14 @@ namespace FarolCashBox.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CashBoxController : ControllerBase
+    public class CashBoxController : BaseController
     {
-        private readonly IMediator _mediator;
-
-        public CashBoxController(IMediator mediator)
-            => _mediator = mediator;
+        public CashBoxController(IMediator mediator) 
+            : base (mediator) { }
 
         [HttpPost]
-        public Task<GenericCommandResult<CreateCashBoxResponse>> CreateProduct(
+        public async Task<IActionResult> CreateProduct(
             [FromBody] CreateCashBoxRequest request)
-            => _mediator.Send(request);
+            => await SendRequest(request).ConfigureAwait(false);
     }
 }

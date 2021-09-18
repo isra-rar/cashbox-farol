@@ -1,4 +1,5 @@
-﻿using FarolCashBox.Domain.Commands.Requests;
+﻿using AutoMapper;
+using FarolCashBox.Domain.Commands.Requests;
 using FarolCashBox.Domain.Commands.Response;
 using FarolCashBox.Domain.Entities;
 using FarolCashBox.Domain.Enums;
@@ -17,11 +18,13 @@ namespace FarolCashBox.Tests.EntityTests
     {
         private readonly CreateCashBoxRequestHandler _sut;
         private readonly ICashBoxRepository _cashBoxReposity;
+        private readonly IMapper _mapper;
 
         public CreateCashBoxRequestHandlerTests()
         {
             _cashBoxReposity = Substitute.For<ICashBoxRepository>();
-            _sut = new CreateCashBoxRequestHandler(_cashBoxReposity);
+            _mapper = Substitute.For<IMapper>();
+            _sut = new CreateCashBoxRequestHandler(_cashBoxReposity, _mapper);
         }
 
         [Fact]
@@ -34,9 +37,7 @@ namespace FarolCashBox.Tests.EntityTests
             var result = await _sut.Handle(request, default);
 
             // Assert
-            result.Sucess.Should().BeTrue();
-            result.Code.Should().Be(200);
-            result.Data.Should().BeOfType(typeof(CreateCashBoxResponse));
+            result.IsSuccess.Should().BeTrue();
             _cashBoxReposity.Received().Create(Arg.Any<CashBox>());
         }
 

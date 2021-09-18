@@ -1,45 +1,43 @@
-﻿using FarolCashBox.Domain.Commands;
+﻿using AutoMapper;
+using FarolCashBox.Domain.Commands;
 using FarolCashBox.Domain.Commands.Requests;
 using FarolCashBox.Domain.Commands.Response;
 using FarolCashBox.Domain.Entities;
+using FarolCashBox.Domain.Expections;
 using FarolCashBox.Domain.Repositories;
 using Flunt.Notifications;
 using MediatR;
+using OperationResult;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace FarolCashBox.Domain.Handlers
 {
-    public class CreateCashBoxRequestHandler : Notifiable<Notification>, IRequestHandler<CreateCashBoxRequest, GenericCommandResult<CreateCashBoxResponse>>
+    public class CreateCashBoxRequestHandler : Notifiable<Notification>, IRequestHandler<CreateCashBoxRequest, Result<CreateCashBoxResponse>>
     {
         private readonly ICashBoxRepository _cashBoxReposity;
+        private readonly IMapper _mapper;
 
-        public CreateCashBoxRequestHandler(ICashBoxRepository cashBoxReposity)
+        public CreateCashBoxRequestHandler(ICashBoxRepository cashBoxReposity, IMapper mapper)
         {
             _cashBoxReposity = cashBoxReposity;
+            _mapper = mapper;
         }
 
-        public async Task<GenericCommandResult<CreateCashBoxResponse>> Handle(CreateCashBoxRequest request, CancellationToken cancellationToken)
+        public async Task<Result<CreateCashBoxResponse>> Handle(CreateCashBoxRequest request, CancellationToken cancellationToken)
         {
             request.Validate();
             if (!request.IsValid)
             {
-                var failValidation = new GenericCommandResult<CreateCashBoxResponse>(false, "Dados Invalidos", request.Notifications, 400);
-                return await Task.FromResult(failValidation);
+                return new InvalidModelException(request.Notifications.ToList());
             }
 
             var cashBox = new CashBox();
 
             _cashBoxReposity.Create(cashBox);
 
-            var result = new GenericCommandResult<CreateCashBoxResponse>(true, "Caixa criado com sucesso",
-            new CreateCashBoxResponse
-            {
-                Id = cashBox.Id,
-                CreationDate = cashBox.CreationDate,
-            });
-
-            return await Task.FromResult(result);
+            return _mapper.Map<CreateCashBoxResponse>(cashBox);
         }
     }
 }

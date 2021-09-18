@@ -20,6 +20,9 @@ namespace FarolCashBox.Infra.Maps
                 .HasConversion<string>();
 
             builder.HasMany(p => p.Products).WithMany(o => o.Orders);
+
+
+            // o mapeamento está tentando cadastras os produtos do pedido mais uma vez 
         }
     }
 }

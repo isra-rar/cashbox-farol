@@ -1,9 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
-using FarolCashBox.Domain.Entities;
 using FarolCashBox.Domain.Mapper;
 using FarolCashBox.Domain.Repositories;
 using FarolCashBox.Infra.Context;
@@ -11,13 +6,10 @@ using FarolCashBox.Infra.Repositories;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
 namespace FarolCashBox.WebApi
@@ -47,7 +39,7 @@ namespace FarolCashBox.WebApi
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ICashBoxRepository, CashBoxRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
-            services.AddAutoMapper(typeof(ProductProfile));
+            services.AddAutoMapper(typeof(ProductProfile), typeof(CashBoxProfile), typeof(OrderProfile));
             services.AddMediatR(AppDomain.CurrentDomain.GetAssemblies());
         }
 

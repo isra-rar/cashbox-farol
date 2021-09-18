@@ -4,12 +4,13 @@ using FarolCashBox.Domain.Enums;
 using Flunt.Notifications;
 using Flunt.Validations;
 using MediatR;
+using OperationResult;
 using System;
 using System.Collections.Generic;
 
 namespace FarolCashBox.Domain.Commands.Requests
 {
-    public class CreateOrderRequest : Notifiable<Notification>, IRequest<GenericCommandResult<CreateOrderResponse>>, ICommand
+    public class CreateOrderRequest : Notifiable<Notification>, IRequest<Result<CreateOrderResponse>>, ICommand
     {
         public CreateOrderRequest(List<Guid> productIds, EPaymentType paymentType, Guid cashBoxId)
         {

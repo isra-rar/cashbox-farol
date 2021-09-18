@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace FarolCashBox.Domain.Mapper
 {
-    public class ProductProfile : Profile
+    public class CashBoxProfile : Profile
     {
-        public ProductProfile()
+        public CashBoxProfile()
         {
-            CreateMap<Product, CreateProductResponse>();
+            CreateMap<CashBox, CreateCashBoxResponse>();
         }
     }
 }

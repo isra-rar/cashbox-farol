@@ -31,9 +31,7 @@ namespace FarolCashBox.Domain.Handlers
         {
             request.Validate();
             if (!request.IsValid)
-            {
                 return new InvalidModelException(request.Notifications.ToList());
-            }
 
             var product = new Product(request.Name, request.Value, request.Quantity, request.ProductType);
 
